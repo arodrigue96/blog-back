@@ -1,8 +1,12 @@
-export interface Post {
-  id: number;
-  title: string;
-  author: string;
-  content: string;
+export interface PostImage {
   imageUrl: string;
   altImageText: string;
+}
+
+export interface PostStructure extends PostImage {
+  id: number;
+  title: string;
+  date: string;
+  author: string;
+  content: string;
 }
