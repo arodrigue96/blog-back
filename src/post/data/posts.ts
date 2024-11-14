@@ -1,4 +1,4 @@
-import Post from "../Post";
+import Post from "../Post/Post.js";
 
 const post1: Post = new Post(
   "Explorando el Futuro de la IA",
@@ -22,4 +22,6 @@ const post2: Post = new Post(
   },
 );
 
-export const posts: Post[] = [post1, post2];
+const posts: Post[] = [post1, post2];
+
+export default posts;
