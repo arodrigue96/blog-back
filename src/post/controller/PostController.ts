@@ -1,6 +1,6 @@
 import { type Request, type Response } from "express";
 import { type PostControllerStructure } from "./types";
-import Post from "../Post/Post";
+import type Post from "../Post/Post";
 
 class PostController implements PostControllerStructure {
   constructor(private readonly posts: Post[]) {}

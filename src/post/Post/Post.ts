@@ -1,4 +1,4 @@
-import { type PostImage, type PostStructure } from "./types";
+import { type PostStructure, type PostImage } from "./types";
 
 class Post implements PostStructure {
   static nextId = 1;
