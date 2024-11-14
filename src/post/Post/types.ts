@@ -6,7 +6,7 @@ export interface PostImage {
 export interface PostStructure extends PostImage {
   id: number;
   title: string;
-  date: string;
+  date: Date;
   author: string;
   content: string;
 }

@@ -1,12 +1,11 @@
 import { type PostImage, type PostStructure } from "./types";
 
-let nextId = 0;
-
 class Post implements PostStructure {
+  static nextId = 1;
   public id: number;
   public imageUrl: string;
   public altImageText: string;
-  public date: string;
+  public date: Date;
 
   constructor(
     public title: string,
@@ -14,8 +13,8 @@ class Post implements PostStructure {
     public content: string,
     { imageUrl, altImageText }: PostImage,
   ) {
-    this.id = nextId++;
-    this.date = Date();
+    this.id = Post.nextId++;
+    this.date = new Date();
     this.altImageText = altImageText;
     this.imageUrl = imageUrl;
   }
