@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "build:dev": "tsc -w",
+    "start": "node dist",
     "prepare": "husky"
   },
   "keywords": [],
@@ -15,16 +16,21 @@
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
+    "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "@typescript-eslint/eslint-plugin": "7.18",
+    "@typescript-eslint/parser": "7.18",
     "eslint": "^8.57.1",
-    "husky": "^9.1.6",
-    "lint-staged": "^15.2.10",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-config-xo": "^0.45.0",
     "eslint-config-xo-typescript": "^5.0.0",
-    "eslint-config-prettier": "^9.1.0",
-    "@typescript-eslint/eslint-plugin": "7.18",
-    "@typescript-eslint/parser": "7.18"
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10"
   },
   "dependencies": {
+    "chalk": "^4.1.2",
+    "express": "^4.21.1",
+    "morgan": "^1.10.0",
     "prettier": "^3.3.3"
   }
 }
