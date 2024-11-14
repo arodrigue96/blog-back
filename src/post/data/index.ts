@@ -1,6 +1,6 @@
 import Post from "../Post";
 
-const post1 = new Post(
+const post1: Post = new Post(
   "Explorando el Futuro de la IA",
   "Ana Torres",
   "La IA está transformando nuestras vidas, desde la automatización hasta la personalización. ¿Qué cambios veremos en los próximos años? Descubre cómo la IA redefine el mundo que conocemos.",
@@ -11,7 +11,7 @@ const post1 = new Post(
   },
 );
 
-const post2 = new Post(
+const post2: Post = new Post(
   "Innovación en Energía Renovable",
   "Carlos Méndez",
   "Las energías renovables están revolucionando el panorama energético global. Desde la solar hasta la eólica, descubre cómo avanzamos hacia un futuro más sostenible y limpio.",
@@ -22,4 +22,4 @@ const post2 = new Post(
   },
 );
 
-export const posts = [post1, post2];
+export const posts: Post[] = [post1, post2];
