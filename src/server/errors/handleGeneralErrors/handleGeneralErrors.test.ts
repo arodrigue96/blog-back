@@ -1,5 +1,6 @@
 import { type Response, type Request } from "express";
 import handleGeneralErrors from "./handleGeneralErrors";
+import ServerError from "../ServerError/ServerError";
 
 afterEach(() => {
   jest.clearAllMocks();
@@ -16,9 +17,11 @@ describe("Given handleGeneralErrors middleware", () => {
   };
 
   describe("When it receives a server error with a status code 404 and a message 'Endpoint not found'", () => {
-    const error = { message: "Endpoint not found", statusCode: 404 };
+    const error = new ServerError("Endpoint not found", 404);
 
     test("Then it should call status method of the response with status code 404", () => {
+      const expectedStatusCode = 404;
+
       handleGeneralErrors(
         error,
         request as Request,
@@ -26,10 +29,12 @@ describe("Given handleGeneralErrors middleware", () => {
         next,
       );
 
-      expect(response.status).toHaveBeenCalledWith(error.statusCode);
+      expect(response.status).toHaveBeenCalledWith(expectedStatusCode);
     });
 
     test("Then it should call json method with message 'Endpoint not found'", () => {
+      const expectedErrorMessage = { message: "Endpoint not found" };
+
       handleGeneralErrors(
         error,
         request as Request,
@@ -37,12 +42,12 @@ describe("Given handleGeneralErrors middleware", () => {
         next,
       );
 
-      expect(response.json).toHaveBeenCalledWith({ message: error.message });
+      expect(response.json).toHaveBeenCalledWith(expectedErrorMessage);
     });
   });
 
   describe("When it receives a error with message 'Type Error'", () => {
-    const error = { message: "Type Error" };
+    const error = new ServerError("Type Error");
 
     test("Then it should call status method with status code 500", () => {
       const expectedStatusCode = 500;
