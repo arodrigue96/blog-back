@@ -2,6 +2,10 @@ import { type Request, type Response } from "express";
 import Post from "../../Post/Post";
 import PostController from "../PostController";
 
+afterEach(() => {
+  jest.clearAllMocks();
+});
+
 describe("Given the get method of the PostController class", () => {
   describe("When it receives a response", () => {
     const post1: Post = new Post(
