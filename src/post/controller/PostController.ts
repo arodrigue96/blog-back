@@ -8,7 +8,7 @@ class PostController implements PostControllerStructure {
   get = (_req: Request, res: Response): void => {
     const statusCode = 200;
 
-    res.status(statusCode).json({ posts: this.posts });
+    res.status(statusCode).json(this.posts);
   };
 
   post = (req: Request, res: Response): void => {
@@ -22,7 +22,7 @@ class PostController implements PostControllerStructure {
 
     this.posts.push(newPost);
 
-    res.status(statusCode).json({ post: newPost });
+    res.status(statusCode).json(newPost);
   };
 }
 
