@@ -43,7 +43,7 @@ describe("Given the get method of the PostController class", () => {
     test("Then it should call the response's method json with the post1 and post2", () => {
       postController.get(req as Request, res as Response);
 
-      expect(res.json).toHaveBeenCalledWith(posts);
+      expect(res.json).toHaveBeenCalledWith({ posts });
     });
   });
 });
