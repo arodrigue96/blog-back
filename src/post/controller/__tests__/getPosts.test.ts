@@ -1,14 +1,14 @@
 import { type Request, type Response } from "express";
-import Post from "../../Post/Post";
-import PostController from "../PostController";
+import Posts from "../../Post/Post";
+import PostsController from "../PostsController";
 
 afterEach(() => {
   jest.clearAllMocks();
 });
 
-describe("Given the get method of the PostController class", () => {
+describe("Given the getPosts method of the PostsController class", () => {
   describe("When it receives a response", () => {
-    const post1: Post = new Post(
+    const post1: Posts = new Posts(
       "asasassq",
       "Aniol",
       "ñdljsafldjsafldñsajldñsaj",
@@ -18,14 +18,19 @@ describe("Given the get method of the PostController class", () => {
       },
     );
 
-    const post2: Post = new Post("asakjljsassq", "Erik", "ñljsfldñsajldñsaj", {
-      imageUrl: "bestblog2.com",
-      altImageText: "cara de Erik",
-    });
+    const post2: Posts = new Posts(
+      "asakjljsassq",
+      "Erik",
+      "ñljsfldñsajldñsaj",
+      {
+        imageUrl: "bestblog2.com",
+        altImageText: "cara de Erik",
+      },
+    );
 
-    const posts: Post[] = [post1, post2];
+    const posts: Posts[] = [post1, post2];
 
-    const postController = new PostController(posts);
+    const postController = new PostsController(posts);
     const req = {};
     const res: Partial<Response> = {
       status: jest.fn().mockReturnThis(),
@@ -35,13 +40,13 @@ describe("Given the get method of the PostController class", () => {
     test("Then it should call the response's method with status 200", () => {
       const expectedStatusCode = 200;
 
-      postController.get(req as Request, res as Response);
+      postController.getPosts(req as Request, res as Response);
 
       expect(res.status).toHaveBeenCalledWith(expectedStatusCode);
     });
 
     test("Then it should call the response's method json with the post1 and post2", () => {
-      postController.get(req as Request, res as Response);
+      postController.getPosts(req as Request, res as Response);
 
       expect(res.json).toHaveBeenCalledWith({ posts });
     });
