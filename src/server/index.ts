@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import postRouter from "../router/postRouter.js";
+import postsRouter from "../router/postsRouter.js";
 import handleEndpointNotFound from "./errors/handleEndpointNotFound/handleEndpointNotFound.js";
 import handleGeneralErrors from "./errors/handleGeneralErrors/handleGeneralErrors.js";
 
@@ -13,7 +13,7 @@ app.use(morgan("dev"));
 
 app.use(express.json());
 
-app.use("/posts", postRouter);
+app.use("/posts", postsRouter);
 
 app.use(handleEndpointNotFound);
 

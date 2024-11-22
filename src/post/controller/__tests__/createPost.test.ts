@@ -1,14 +1,14 @@
 import { type Response, type Request } from "express";
-import Post from "../../Post/Post";
-import PostController from "../PostController";
+import Posts from "../../Post/Post";
+import PostsController from "../PostsController";
 
 afterEach(() => {
   jest.clearAllMocks();
 });
 
-describe("Given the method get of PostController class", () => {
+describe("Given the method createPost of PostsController class", () => {
   describe("When it receives a request", () => {
-    const post1: Post = new Post(
+    const post1: Posts = new Posts(
       "asasassq",
       "Aniol",
       "ñdljsafldjsafldñsajldñsaj",
@@ -18,12 +18,17 @@ describe("Given the method get of PostController class", () => {
       },
     );
 
-    const post2: Post = new Post("asakjljsassq", "Erik", "ñljsfldñsajldñsaj", {
-      imageUrl: "bestblog2.com",
-      altImageText: "cara de Erik",
-    });
+    const post2: Posts = new Posts(
+      "asakjljsassq",
+      "Erik",
+      "ñljsfldñsajldñsaj",
+      {
+        imageUrl: "bestblog2.com",
+        altImageText: "cara de Erik",
+      },
+    );
 
-    const postController = new PostController([post1, post2]);
+    const postController = new PostsController([post1, post2]);
 
     const req: Partial<Request> = {
       body: {},
@@ -36,13 +41,13 @@ describe("Given the method get of PostController class", () => {
 
     test("Then it should call status method with status code 201", () => {
       const expectedStatusCode = 201;
-      postController.post(req as Request, res as Response);
+      postController.createPost(req as Request, res as Response);
 
       expect(res.status).toHaveBeenCalledWith(expectedStatusCode);
     });
 
     test("Then it should call json method", () => {
-      postController.post(req as Request, res as Response);
+      postController.createPost(req as Request, res as Response);
 
       expect(res.json).toHaveBeenCalled();
     });
